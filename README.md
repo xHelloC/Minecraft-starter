@@ -1,6 +1,6 @@
 # Minecraft starter
 ### Supported OS: **Windows 7 - 11**
-### Supported products: **purpur,waterfall,spigot**
+### Supported products: **purpur, waterfall, spigot**
 ### Supported versions: **1.12.2 - 1.19**
 
 .
