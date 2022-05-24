@@ -4,13 +4,13 @@
 ### Supported versions: **1.12.2 - 1.19**
 
 .
-don't be shy to report bugs, this repository is open, so bugs will be addressed and new versions will be release
+don't be shy to report bugs, this repository is open, so bugs will be addressed and new versions will be released
 .
 
 ![image info](https://i.ibb.co/rcTSD3x/image.png)
 
 `usage`
-> open cmd.. *Command promt* from file whenre is located the **starter.bat**
+> open cmd.. *Command prompt* from file where is located the **starter.bat**
 
 > or you can basically create another file **.bat**
 
@@ -19,7 +19,7 @@ start starter.bat --name "YourName" --flags etc...
 ```
 
 ```md
-<string>.bat --name "<string>" [--flags ["<string>"akair" (custom|nromal)] --Min<integer><string>(M|G) --Max<integer><string>(M|G) [(--purpur|--waterfall|--spigot)] [--version [(<version>)]]
+<string>.bat --name "<string>" [--flags ["<string>"akair" (custom|normal)] --Min<integer><string>(M|G) --Max<integer><string>(M|G) [(--purpur|--waterfall|--spigot)] [--version [(<version>)]]
 ```
 `example`
 ```
