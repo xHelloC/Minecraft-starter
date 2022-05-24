@@ -1,4 +1,6 @@
 @rem version = 2.6.0-alpha
+@rem author = focus
+@rem production = focusproduction
 
 @echo off
 mode con:cols=141 lines=32
