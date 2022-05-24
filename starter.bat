@@ -14,12 +14,15 @@ set flags_1=java -Xms4G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxG
 set flags_0=java -Xms512M -Xmx1000M -jar server.jar nogui
 set flags_custom=java -Xms%7 -Xmx%9 -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar !arg_10:~2,25!.jar nogui
 
+:remove_temp
+del /s result result2 tmp .console_history >nul 2>&1
+goto exec%status_int%
 
 GOTO :MAIN
 
 @REM functions
 :exec0
->nul del %cd%result && del %cd%result2
+goto :remove_temp
 set status_int=0
 echo.
 echo.
@@ -71,7 +74,7 @@ if %returned% == true (
 
 
 :exec1
->nul del %cd%result && del %cd%result2
+goto :remove_temp
 set status_int=1
 echo.
 echo.
@@ -128,7 +131,7 @@ echo.
 echo.
 echo.
 echo.eula=true> eula.txt
->nul del .console_history
+goto :remove_temp
 %flags_custom%
 
 >nul find "RestartCommand" logs/latest.log && ( set returned=true ) || ( set returned=false )
