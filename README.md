@@ -4,6 +4,8 @@
 ### Supported versions: **1.12.2 - 1.19**
 
 .
+don't be shy to report bugs, this repository is open, so bugs will be addressed and new versions will be release
+.
 
 ![image info](https://i.ibb.co/rcTSD3x/image.png)
 
