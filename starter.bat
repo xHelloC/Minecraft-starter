@@ -189,8 +189,6 @@ setlocal enabledelayedexpansion
 
 
 :MAIN
-reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 0x00000001 /f
-reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 0x00000000 /f
 
 cls
 echo.
@@ -210,14 +208,18 @@ echo.
 echo.
 echo [90m[[96m*[90m] [37m Setting [96m 'enableextensions' [37m for run a custom variables
 timeout %t% >nul 2>&1
-reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 0x00000001 /f >nul 2>&1
 echo [90m[[32m+[90m] [37m Adding REG_DWORD Value
-timeout %t% >nul 2>&1
-echo [90m[[32m+[90m] [37m Reloading console..
-timeout 2 >nul 2>&1
-echo [90m[[96m*[90m] [92m Success!. [37m
+reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 0x00000000 /f >nul 2>&1
+reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 0x00000001 /f >nul 2>&1
+set "name=VirtualTerminalLevel"
+echo [90m[[96m*[90m] [37m Checking REG_DWORD Value
+for /f "tokens=3" %%A in ('reg query "HKCU\Console" /v %name% 2^>nul ^| find "%name%"') do set "output=%%A"
+if %output%==0x1 (
+  echo [90m[[32m+[90m] [37m Success.. 
+) else (
+  echo [90m[[91m?[90m] [37m Failure..   
+)
 echo.
-
 if "%1" == "--name" (
     if [%2]==[] (
     echo [90m[[31m?[90m] [37mInserted empty string [91m"" [37m
